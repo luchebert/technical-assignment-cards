@@ -1,0 +1,104 @@
+{
+  "user_id": 8337,
+  "wishlist_id": 153055,
+  "venue_id": 198679,
+  "checkin_date": "2024-04-18",
+  "checkout_date": "2024-04-21",
+  "currency_code": "EUR",
+  "billing_groups": {
+    "Accommodations": {
+      "line_items": [
+        {
+          "day_number": 1,
+          "quantity": 20,
+          "label": "Standard room",
+          "unit_cost": "100.00"
+        },
+        {
+          "day_number": 2,
+          "quantity": 20,
+          "label": "Standard room",
+          "unit_cost": "100.00"
+        },
+        {
+          "day_number": 3,
+          "quantity": 20,
+          "label": "Standard room",
+          "unit_cost": "100.00"
+        }
+      ],
+      "fees": [
+        {
+          "label": "Service fee",
+          "fee_type": "percentage",
+          "quantity": null,
+          "is_taxable": true,
+          "unit_cost": null,
+          "percentage": 0.17
+        }
+      ]
+    },
+    "Meeting spaces": {
+      "line_items": [
+        {
+          "day_number": 1,
+          "quantity": 1,
+          "label": "Non taxable meeting space",
+          "unit_cost": "4000.00"
+        }
+      ],
+      "fees": []
+    },
+    "Food and beverage": {
+      "line_items": [
+        {
+          "day_number": 1,
+          "quantity": 45,
+          "label": "Breakfast",
+          "unit_cost": "150.00"
+        },
+        {
+          "day_number": 1,
+          "quantity": 1,
+          "label": "asdsa",
+          "unit_cost": "0.00"
+        }
+      ],
+      "fees": [
+        {
+          "label": "Taxable fee",
+          "fee_type": "flat",
+          "quantity": 1,
+          "is_taxable": true,
+          "unit_cost": 100,
+          "percentage": null
+        },
+        {
+          "label": "Non taxable fee",
+          "fee_type": "percentage",
+          "quantity": null,
+          "is_taxable": false,
+          "unit_cost": null,
+          "percentage": 0.5
+        }
+      ]
+    }
+  },
+  "taxes": [
+    {
+      "label": "Accommodations tax",
+      "percentage": "0.07000",
+      "billing_groups": ["Accommodations"]
+    },
+    {
+      "label": "F&B tax",
+      "percentage": "0.05000",
+      "billing_groups": ["Food and beverage"]
+    },
+    {
+      "label": "Federal tax",
+      "percentage": "0.12000",
+      "billing_groups": ["Accommodations", "Food and beverage"]
+    }
+  ]
+}
