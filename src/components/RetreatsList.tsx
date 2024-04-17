@@ -1,58 +1,40 @@
-import { useState } from "react";
 import RetreatCard from "./RetreatCard";
 import { RetreatType } from "../retreats";
+import { useHide } from "../hooks/useHide";
 
 interface RetreatListProps {
   retreats: RetreatType[];
-  searchQuery: string;
-  selectedCountry: string;
 }
 
-const RetreatList = ({
-  retreats,
-  searchQuery,
-  selectedCountry,
-}: RetreatListProps) => {
-  const [hiddenRetreats, setHiddenRetreats] = useState<number[]>([]);
+const RetreatList = ({ retreats }: RetreatListProps) => {
+  const { hiddenItems, hideItem } = useHide<RetreatType>();
 
-  const handleHideCard = (retreatId: number) => {
-    setHiddenRetreats([...hiddenRetreats, retreatId]);
-  };
+  // combining the result of the actual filtered retreats and potentially hidden ones
+  const filteredRetreats = retreats.filter(
+    (retreat) => !hiddenItems.includes(retreat)
+  );
 
-  const filteredRetreats = retreats.filter((retreat) => {
-    // Filter by search query
-    const matchSearchQuery =
-      searchQuery.trim() === "" ||
-      retreat.title.toLowerCase().includes(searchQuery.toLowerCase());
-
-    // Filter by country
-    const matchCountry =
-      selectedCountry.trim() === "" || retreat.country === selectedCountry;
-
-    // Hide retreats
-    const isHidden = hiddenRetreats.includes(retreat.id);
-
-    return matchSearchQuery && matchCountry && !isHidden;
-  });
+  const isNoRetreatsFound =
+    retreats.length === 0 || filteredRetreats.length === 0;
 
   return (
     <div
       className={`grid ${
-        filteredRetreats.length > 0
-          ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-          : "grid-cols-1"
+        isNoRetreatsFound
+          ? "grid-cols-1"
+          : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       } gap-4`}
     >
-      {filteredRetreats.length > 0 ? (
+      {isNoRetreatsFound ? (
+        <div className="text-center mt-4">No retreats found.</div>
+      ) : (
         filteredRetreats.map((retreat: RetreatType) => (
           <RetreatCard
             key={retreat.id}
             retreat={retreat}
-            onHide={handleHideCard}
+            onHide={() => hideItem(retreat)}
           />
         ))
-      ) : (
-        <div className="text-center mt-4">No retreats found.</div>
       )}
     </div>
   );

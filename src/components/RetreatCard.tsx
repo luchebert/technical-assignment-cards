@@ -1,5 +1,6 @@
 import { RetreatType } from "../retreats";
 import { formatCurrency, formatNumber } from "../utils/formatters";
+import Button from "./Button";
 
 interface RetreatCardProps {
   retreat: RetreatType;
@@ -96,9 +97,7 @@ const RetreatCard = ({ retreat, onHide }: RetreatCardProps) => {
           </div>
         )}
         <div className="mt-4 text-right">
-          <button className="" onClick={handleHideClick}>
-            X
-          </button>
+          <Button contents="X" onClick={handleHideClick} />
         </div>
       </div>
     </div>

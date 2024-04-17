@@ -1,13 +1,15 @@
-import { useState } from "react";
 import "./App.css";
 import rnvLogo from "./assets/rnv-logo.svg";
 import retreats from "./retreats";
 import SearchFilters from "./components/SearchFilters";
 import RetreatList from "./components/RetreatsList";
+import { useRetreatFilter } from "./hooks/useRetreatFilter";
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedCountry, setSelectedCountry] = useState<string>("");
+  const { filteredRetreats, setSearchQuery, setSelectedCountry } =
+    useRetreatFilter({
+      retreats,
+    });
 
   return (
     <>
@@ -20,11 +22,7 @@ function App() {
         onCountryChange={setSelectedCountry}
       />
       {/* Retreat List */}
-      <RetreatList
-        retreats={retreats}
-        searchQuery={searchQuery}
-        selectedCountry={selectedCountry}
-      />
+      <RetreatList retreats={filteredRetreats} />
     </>
   );
 }
