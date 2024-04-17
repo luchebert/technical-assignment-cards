@@ -36,14 +36,24 @@ const RetreatList = ({
   });
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {filteredRetreats.map((retreat: RetreatType) => (
-        <RetreatCard
-          key={retreat.id}
-          retreat={retreat}
-          onHide={handleHideCard}
-        />
-      ))}
+    <div
+      className={`grid ${
+        filteredRetreats.length > 0
+          ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+          : "grid-cols-1"
+      } gap-4`}
+    >
+      {filteredRetreats.length > 0 ? (
+        filteredRetreats.map((retreat: RetreatType) => (
+          <RetreatCard
+            key={retreat.id}
+            retreat={retreat}
+            onHide={handleHideCard}
+          />
+        ))
+      ) : (
+        <div className="text-center mt-4">No retreats found.</div>
+      )}
     </div>
   );
 };
