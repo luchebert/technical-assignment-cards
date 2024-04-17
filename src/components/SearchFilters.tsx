@@ -57,7 +57,7 @@ const SearchFilters = ({
       <div className="mt-4">
         <label
           htmlFor="country"
-          className="block text-gray-700 font-semibold mb-2 hidden"
+          className="text-gray-700 font-semibold mb-2 hidden"
         >
           Filter by Country:
         </label>
