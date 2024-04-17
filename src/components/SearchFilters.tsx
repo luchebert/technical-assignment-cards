@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import retreats from "../retreats";
+import { BiRightArrowAlt } from "react-icons/bi";
 
 interface SearchFiltersProps {
   onSearchChange: (query: string) => void;
@@ -40,19 +41,7 @@ const SearchFilters = ({
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <svg
-          className="absolute right-3 top-3 h-5 w-5 text-gray-400"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M15 15l5-5m0 0l-5-5m5 5H4"
-          ></path>
-        </svg>
+        <BiRightArrowAlt className="absolute right-3 top-3 h-5 w-5 text-gray-400" />
       </div>
       <div className="mt-4">
         <label
@@ -63,7 +52,7 @@ const SearchFilters = ({
         </label>
         <select
           id="country"
-          className="border border-gray-300 rounded-lg py-2 px-4 w-full focus:outline-none focus:border-blue-500"
+          className="border border-gray-300 rounded-lg py-2 px-4 w-full pr-8 focus:outline-none focus:border-blue-500"
           value={selectedCountry}
           onChange={handleCountryChange}
         >

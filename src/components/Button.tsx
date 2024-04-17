@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 interface ButtonProps {
-  contents: string;
+  contents: string | ReactNode;
   classes?: string;
   onClick: () => void;
 }
