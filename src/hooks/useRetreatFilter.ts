@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RetreatType } from "../retreats";
 
 interface RetreatFilterProps {
@@ -16,19 +16,58 @@ export const useRetreatFilter = ({
 }: RetreatFilterProps): RetreatFilterResult => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedCountry, setSelectedCountry] = useState<string>("");
+  const [filteredRetreats, setFilteredRetreats] = useState<RetreatType[]>([]);
 
-  const filteredRetreats = retreats.filter((retreat) => {
-    // Filter by search query
-    const matchSearchQuery =
-      searchQuery.trim() === "" ||
-      retreat.title.toLowerCase().includes(searchQuery.toLowerCase());
+  useEffect(() => {
+    if (searchQuery === "" && selectedCountry === "") {
+      // No filtering needed, return all retreats
+      setFilteredRetreats(retreats);
+      return;
+    }
 
-    // Filter by country
-    const matchCountry =
-      selectedCountry.trim() === "" || retreat.country === selectedCountry;
+    const filteredRetreats = retreats.filter((retreat) => {
+      // Filter by search query
+      const matchSearchQuery =
+        searchQuery.trim() === "" ||
+        retreat.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        retreat.country.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        retreat.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-    return matchSearchQuery && matchCountry;
-  });
+      // Filter by country
+      const matchCountry =
+        selectedCountry.trim() === "" || retreat.country === selectedCountry;
+
+      return matchSearchQuery && matchCountry;
+    });
+
+    //
+    const sortByrank = (a: RetreatType, b: RetreatType) => {
+      const rankA = calculateRank(a);
+      const rankB = calculateRank(b);
+
+      return rankB - rankA;
+    };
+
+    const calculateRank = (retreat: RetreatType) => {
+      let rank = 0;
+      const query = searchQuery.toLowerCase();
+
+      if (retreat.title.toLowerCase().includes(query)) {
+        rank += 3;
+      }
+      if (retreat.country.toLowerCase().includes(query)) {
+        rank += 2;
+      }
+      if (retreat.description.toLowerCase().includes(query)) {
+        rank += 1;
+      }
+
+      return rank;
+    };
+    // Sort filteredRetreats based on rank
+    filteredRetreats.sort(sortByrank);
+    setFilteredRetreats(filteredRetreats);
+  }, [searchQuery, selectedCountry, retreats]);
 
   return { filteredRetreats, setSearchQuery, setSelectedCountry };
 };
