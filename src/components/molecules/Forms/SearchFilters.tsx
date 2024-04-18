@@ -1,6 +1,6 @@
 import React from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
-import { countryOptions } from "../utils/filterOptions";
+import { countryOptions } from "../../../utils/filterOptions";
 
 interface SearchFiltersProps {
   searchQuery: string;

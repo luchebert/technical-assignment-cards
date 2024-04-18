@@ -1,7 +1,7 @@
 import { BiHide } from "react-icons/bi";
-import { RetreatType } from "../retreats";
-import { formatCurrency, formatNumber } from "../utils/formatters";
-import { Button } from "./Button";
+import { RetreatType } from "../../../retreats";
+import { formatCurrency, formatNumber } from "../../../utils/formatters";
+import { Button } from "../../atoms/Button/Button";
 
 interface RetreatCardProps {
   retreat: RetreatType;

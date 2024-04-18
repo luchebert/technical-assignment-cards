@@ -1,6 +1,6 @@
-import RetreatCard from "./RetreatCard";
-import { RetreatType } from "../retreats";
-import { useHide } from "../hooks/useHide";
+import RetreatCard from "../../molecules/Cards/RetreatCard";
+import { RetreatType } from "../../../retreats";
+import { useHide } from "../../../hooks/useHide";
 
 interface RetreatListProps {
   retreats: RetreatType[];

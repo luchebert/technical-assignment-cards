@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import rnvLogo from "../assets/rnv-logo.svg";
+import rnvLogo from "../../../assets/rnv-logo.svg";
 
 export const Logo = () => {
   const logoRef = useRef<HTMLImageElement>(null);
