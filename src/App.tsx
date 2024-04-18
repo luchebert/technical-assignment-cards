@@ -1,7 +1,7 @@
 import "./App.css";
 import retreats from "./retreats";
-import SearchFilters from "./components/SearchFilters";
-import RetreatList from "./components/RetreatsList";
+import { SearchFilters } from "./components/SearchFilters";
+import { RetreatList } from "./components/RetreatsList";
 import { useRetreatFilter } from "./hooks/useRetreatFilter";
 import { useSearchFilters } from "./hooks/useSearchFilters";
 import { Header } from "./components/Header";

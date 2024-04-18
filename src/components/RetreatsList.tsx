@@ -6,7 +6,7 @@ interface RetreatListProps {
   retreats: RetreatType[];
 }
 
-const RetreatList = ({ retreats }: RetreatListProps) => {
+export const RetreatList = ({ retreats }: RetreatListProps) => {
   const { hiddenItems, hideItem } = useHide<RetreatType>();
 
   // combining the result of the actual filtered retreats and potentially hidden ones
@@ -39,5 +39,3 @@ const RetreatList = ({ retreats }: RetreatListProps) => {
     </div>
   );
 };
-
-export default RetreatList;

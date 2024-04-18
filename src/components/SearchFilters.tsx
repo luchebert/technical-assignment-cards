@@ -9,7 +9,7 @@ interface SearchFiltersProps {
   onCountryChange: (country: string) => void;
 }
 
-const SearchFilters = ({
+export const SearchFilters = ({
   searchQuery,
   selectedCountry,
   onSearchChange,
@@ -61,5 +61,3 @@ const SearchFilters = ({
     </div>
   );
 };
-
-export default SearchFilters;
