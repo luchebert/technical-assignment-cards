@@ -1,35 +1,29 @@
-import React, { useState } from "react";
-import retreats from "../retreats";
+import React from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
+import { countryOptions } from "../utils/filterOptions";
 
 interface SearchFiltersProps {
+  searchQuery: string;
+  selectedCountry: string;
   onSearchChange: (query: string) => void;
   onCountryChange: (country: string) => void;
 }
 
 const SearchFilters = ({
+  searchQuery,
+  selectedCountry,
   onSearchChange,
   onCountryChange,
 }: SearchFiltersProps) => {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedCountry, setSelectedCountry] = useState<string>("");
-
   // Filter retreats based on text Search as you type
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
     onSearchChange(e.target.value);
   };
 
   // Filter retreats based on Pre-populated Country dropdown
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCountry(e.target.value);
     onCountryChange(e.target.value);
   };
-
-  // Get potential countries we can filter by
-  const countryOptions = Array.from(
-    new Set(retreats.map((retreat) => retreat.country))
-  );
 
   return (
     <div className="mt-4">
