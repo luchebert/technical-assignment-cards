@@ -19,8 +19,8 @@ export const useRetreatFilter = ({
   const [filteredRetreats, setFilteredRetreats] = useState<RetreatType[]>([]);
 
   useEffect(() => {
+    // this prevents running the logic until someone actually types in or uses the country select
     if (searchQuery === "" && selectedCountry === "") {
-      // No filtering needed, return all retreats
       setFilteredRetreats(retreats);
       return;
     }
@@ -40,7 +40,6 @@ export const useRetreatFilter = ({
       return matchSearchQuery && matchCountry;
     });
 
-    //
     const sortByrank = (a: RetreatType, b: RetreatType) => {
       const rankA = calculateRank(a);
       const rankB = calculateRank(b);
@@ -48,6 +47,7 @@ export const useRetreatFilter = ({
       return rankB - rankA;
     };
 
+    // ranking logic title > country > description
     const calculateRank = (retreat: RetreatType) => {
       let rank = 0;
       const query = searchQuery.toLowerCase();
