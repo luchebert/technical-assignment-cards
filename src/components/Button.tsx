@@ -6,12 +6,10 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-const Button = ({ contents, classes, onClick }: ButtonProps) => {
+export const Button = ({ contents, classes, onClick }: ButtonProps) => {
   return (
     <button className={classes ? classes : ""} onClick={onClick}>
       {contents}
     </button>
   );
 };
-
-export default Button;

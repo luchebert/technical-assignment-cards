@@ -26,8 +26,8 @@ const SearchFilters = ({
   };
 
   return (
-    <div className="mt-4">
-      <div className="relative">
+    <div className="mt-4 gap-4 flex">
+      <div className="relative flex-1">
         <input
           type="text"
           placeholder="Search..."
@@ -37,7 +37,7 @@ const SearchFilters = ({
         />
         <BiRightArrowAlt className="absolute right-3 top-3 h-5 w-5 text-gray-400" />
       </div>
-      <div className="mt-4">
+      <div className="flex-1">
         <label
           htmlFor="country"
           className="text-gray-700 font-semibold mb-2 hidden"

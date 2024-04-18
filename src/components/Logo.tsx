@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import rnvLogo from "../assets/rnv-logo.svg";
 
-const Logo = () => {
+export const Logo = () => {
   const logoRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
@@ -52,5 +52,3 @@ const Logo = () => {
     </div>
   );
 };
-
-export default Logo;
